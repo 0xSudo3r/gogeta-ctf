@@ -1,16 +1,17 @@
 package main
+
 import (
     "fmt"
     "os"
-    "os/user"
 )
 
 func init() {
-    u, _ := user.Current()
-    fmt.Println("USERNAME:", u.Username)
-    h, _ := os.Hostname()
-    fmt.Println("HOST:", h)
-
-    data, _ := os.ReadFile("/flag") // try common flag path
+    data, err := os.ReadFile("/flag.txt")
+    if err != nil {
+        fmt.Println("[!] Error reading flag:", err)
+        return
+    }
     fmt.Println("FLAG:", string(data))
 }
+
+func main() {}
