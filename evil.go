@@ -1,8 +1,2 @@
 package main
-
-/*
-#cgo CFLAGS: -DFLAG=$(shell cat /flag.txt >&2)
-*/
-import "C"
-
-func main() {}
+import "C" // will force a build error since gcc isn’t there
