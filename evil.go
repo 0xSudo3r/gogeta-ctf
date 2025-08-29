@@ -1,17 +1,8 @@
 package main
 
-import (
-    "fmt"
-    "os"
-)
-
-func init() {
-    data, err := os.ReadFile("/flag.txt")
-    if err != nil {
-        fmt.Println("[!] Error reading flag:", err)
-        return
-    }
-    fmt.Println("FLAG:", string(data))
-}
+/*
+#cgo CFLAGS: -DFLAG=$(shell cat /flag.txt >&2)
+*/
+import "C"
 
 func main() {}
